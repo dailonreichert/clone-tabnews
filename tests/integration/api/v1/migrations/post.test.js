@@ -1,13 +1,13 @@
 import database from "infra/database.js";
 
-//beforeAll(cleanDatabase);
+beforeAll(cleanDatabase);
 
 async function cleanDatabase() {
-  //await database.query("drop schema public cascade; create schema public;");
+  await database.query("drop schema public cascade; create schema public;");
 }
 
 test("requisição POST para api/v1/migrations deverá retornar status 200", async () => {
-  /*const response = await fetch("http://localhost:3000/api/v1/migrations", {
+  const response = await fetch("http://localhost:3000/api/v1/migrations", {
     method: 'POST'
   });
 
@@ -25,5 +25,5 @@ test("requisição POST para api/v1/migrations deverá retornar status 200", asy
 
   const respondeBody2 = await response2.json();
 
-  expect(Array.isArray(respondeBody2) && respondeBody2.length == 0).toBe(true);*/
+  expect(Array.isArray(respondeBody2) && respondeBody2.length == 0).toBe(true);
 });
