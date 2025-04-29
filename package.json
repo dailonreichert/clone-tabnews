@@ -4,7 +4,7 @@
   "description": "Projeto do curso.dev",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run up && next dev",
+    "dev": "npm run up && npm run wait-for-postgres && npm run migrationu && next dev",
     "up": "docker compose -f infra/compose.yaml up -d",
     "stop": "docker compose -f infra/compose.yaml stop",
     "down": "docker compose -f infra/compose.yaml down",
@@ -13,7 +13,8 @@
     "test": "jest --runInBand",
     "testw": "jest --watchAll --runInBand",
     "migrationc": "node-pg-migrate -m infra/migrations create",
-    "migrationu": "node-pg-migrate -m infra/migrations --envPath .env.development up"
+    "migrationu": "node-pg-migrate -m infra/migrations --envPath .env.development up",
+    "wait-for-postgres": "node infra/scripts/wait-for-postgres.js"
   },
   "author": "",
   "license": "MIT",
@@ -21,7 +22,7 @@
     "dotenv": "^16.4.4",
     "dotenv-expand": "^11.0.6",
     "next": "^13.1.6",
-    "node-pg-migrate": "^6.2.2",
+    "node-pg-migrate": "^7.9.1",
     "pg": "^8.11.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
